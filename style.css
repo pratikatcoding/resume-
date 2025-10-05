@@ -1,0 +1,263 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #00aaff; /* A bright blue for accents */
+    --background-color: #121212; /* A very dark grey for the background */
+    --surface-color: #1e1e1e; /* A slightly lighter grey for cards/surfaces */
+    --text-color: #e0e0e0; /* A light grey for text */
+    --text-secondary-color: #a0a0a0; /* A dimmer grey for subtitles */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; }
+p { margin-bottom: 1rem; color: var(--text-secondary-color); }
+a { color: var(--primary-color); text-decoration: none; }
+
+/* --- Layout & Sections --- */
+.content-section, .hero-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.content-section.visible, .hero-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 20%;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-branding {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary-color);
+    margin-bottom: 2rem;
+}
+
+/* --- About Section --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    text-align: left;
+}
+.about-image img {
+    max-width: 300px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+}
+.about-text {
+    flex: 1;
+}
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--surface-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.project-card h3, .project-card p, .project-links {
+    padding: 0 1.5rem;
+}
+
+.project-card h3 {
+    margin-top: 1.5rem;
+}
+
+.project-links {
+    padding-bottom: 1.5rem;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* --- Contact Section --- */
+.contact-message {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.1rem;
+}
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.contact-item {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+.contact-item i {
+    margin-right: 0.5rem;
+}
+.contact-item:hover {
+    color: #ffffff;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--surface-color);
+    color: var(--text-secondary-color);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0088cc;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 60px; /* Adjust based on navbar height */
+        flex-direction: column;
+        background-color: var(--surface-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        gap: 0;
+    }
+    /* Simple JS will be needed for a hamburger menu, but for now we hide it */
+    .nav-menu { display: none; } 
+    
+    .about-container {
+        flex-direction: column;
+    }
+}
