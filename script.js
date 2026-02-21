@@ -70,3 +70,31 @@ window.onscroll = function() {
     btn.style.display = "none";
   }
 };
+document.addEventListener("DOMContentLoaded", function() {
+  const recForm = document.getElementById('recForm');
+  const modal = document.getElementById('thankYouModal');
+  const closeModal = document.getElementById('closeModal');
+  const recText = document.getElementById('recText');
+
+  recForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Stops the page from reloading
+
+    // Check if the textarea isn't just empty spaces
+    if (recText.value.trim() !== "") {
+      modal.style.display = "flex"; // Show the pop-up
+      recText.value = "";           // Clear the text box for the next entry
+    }
+  });
+
+  // Close the modal when clicking the 'Close' button
+  closeModal.addEventListener('click', function() {
+    modal.style.display = "none";
+  });
+
+  // Close the modal if the user clicks anywhere outside the white box
+  window.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
